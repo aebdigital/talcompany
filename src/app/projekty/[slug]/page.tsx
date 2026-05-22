@@ -7,17 +7,17 @@ import { ProjectGallery } from "@/components/ProjectGallery";
 import { FadeInUp } from "@/components/FadeInUp";
 import { PROJECTS, getProject } from "@/lib/projects";
 
-type PageProps = { params: Promise<{ id: string }> };
+type PageProps = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return PROJECTS.map((p) => ({ id: p.id }));
+  return PROJECTS.map((p) => ({ slug: p.id }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { id } = await params;
-  const project = getProject(id);
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project) return {};
   return {
     title: `${project.title} – ${project.year} | TAL COMPANY`,
@@ -36,8 +36,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-  const { id } = await params;
-  const project = getProject(id);
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project) notFound();
 
   const breadcrumbJsonLd = {

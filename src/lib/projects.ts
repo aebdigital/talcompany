@@ -1,6 +1,7 @@
-// Auto-generated from scraping https://www.talcompany.sk/subpages/projects/
+// Project data originally scraped from https://www.talcompany.sk/subpages/projects/
 export type Project = {
   id: string;
+  legacyId: string;
   title: string;
   year: string;
   category: string;
@@ -18,7 +19,8 @@ export const CATEGORIES = [
 
 export const PROJECTS: Project[] = [
   {
-    id: "1",
+    id: "zahradna-krajinna-architektura",
+    legacyId: "1",
     title: "Záhradná a krajinná architektúra",
     year: "od roku 2006",
     category: "Záhrady & Spevnené plochy",
@@ -55,7 +57,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "2",
+    id: "polyfunkcny-objekt-pivovarska-zilina",
+    legacyId: "2",
     title: "Polyfunkčný objekt na ul. Pivovarská, Žilina",
     year: "rok 2006",
     category: "Priemyselné & Inžinierske stavby",
@@ -66,7 +69,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "3",
+    id: "obytny-subor-amfiteater-zilina",
+    legacyId: "3",
     title: "Obytný súbor Amfiteáter-Žilina",
     year: "rok 2007",
     category: "Priemyselné & Inžinierske stavby",
@@ -86,7 +90,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "4",
+    id: "softel-zilina",
+    legacyId: "4",
     title: "Spol. Softel, Žilina",
     year: "rok 2007",
     category: "Priemyselné & Inžinierske stavby",
@@ -97,7 +102,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "5",
+    id: "vuc-zilina",
+    legacyId: "5",
     title: "VÚC Žilina",
     year: "rok 2007",
     category: "Priemyselné & Inžinierske stavby",
@@ -108,7 +114,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "6",
+    id: "sou-hlinska-zilina",
+    legacyId: "6",
     title: "SOU Hlinská, Žilina",
     year: "rok 2008",
     category: "Školy & Nemocnice",
@@ -131,7 +138,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "7",
+    id: "zakladna-skola-zazriva",
+    legacyId: "7",
     title: "Základná škola v Zázrivej",
     year: "rok 2008",
     category: "Školy & Nemocnice",
@@ -148,7 +156,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "8",
+    id: "hotel-predium-vrable",
+    legacyId: "8",
     title: "Hotel Prédium, Vráble",
     year: "rok 2009",
     category: "Priemyselné & Inžinierske stavby",
@@ -165,7 +174,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "9",
+    id: "zakladna-skola-tvrdosin",
+    legacyId: "9",
     title: "Základná škola v Tvrdošíne",
     year: "rok 2010",
     category: "Školy & Nemocnice",
@@ -182,7 +192,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "10",
+    id: "bytovy-dom-stranavy",
+    legacyId: "10",
     title: "Bytový dom v Stráňavoch",
     year: "rok 2010",
     category: "Bytové & Rodinné domy",
@@ -195,7 +206,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "11",
+    id: "atomove-elektrarne-mochovce",
+    legacyId: "11",
     title: "Atómové elektrárne Mochovce",
     year: "rok 2010-2013",
     category: "Priemyselné & Inžinierske stavby",
@@ -223,7 +235,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "12",
+    id: "rodinny-dom-do-medziluzia-zilina",
+    legacyId: "12",
     title: "Rodinný dom, Do Medzilužia, Žilina",
     year: "rok 2011",
     category: "Bytové & Rodinné domy",
@@ -240,7 +253,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "13",
+    id: "bytovy-dom-zilina",
+    legacyId: "13",
     title: "Bytový dom, Žilina",
     year: "rok 2011",
     category: "Bytové & Rodinné domy",
@@ -253,7 +267,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "14",
+    id: "zeleznicny-tunel-votice",
+    legacyId: "14",
     title: "Železničný tunel Votice",
     year: "rok 2011",
     category: "Priemyselné & Inžinierske stavby",
@@ -274,7 +289,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "15",
+    id: "zakladna-skola-kuncova-praha-5",
+    legacyId: "15",
     title: "Základná škola Kuncová, Praha 5",
     year: "rok 2011",
     category: "Školy & Nemocnice",
@@ -290,7 +306,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "16",
+    id: "zakladna-skola-chlupova-praha-5",
+    legacyId: "16",
     title: "Základná škola, Chlupova, Praha 5",
     year: "rok 2011",
     category: "Školy & Nemocnice",
@@ -305,7 +322,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "17",
+    id: "budova-alpha-bb-centrum-praha-4",
+    legacyId: "17",
     title: "Budova ALPHA, BB Centrum, Praha 4",
     year: "rok 2011-2012",
     category: "Priemyselné & Inžinierske stavby",
@@ -329,7 +347,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "18",
+    id: "libensky-pivovar-praha",
+    legacyId: "18",
     title: "Libenský pivovar, Praha",
     year: "rok 2012",
     category: "Priemyselné & Inžinierske stavby",
@@ -344,7 +363,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "19",
+    id: "rodinny-dom-kocis-zilina-budatin",
+    legacyId: "19",
     title: "RD p. Kočiš, Žilina-Budatín",
     year: "rok 2012",
     category: "Bytové & Rodinné domy",
@@ -355,7 +375,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "20",
+    id: "bytovy-dom-nanterska-zilina",
+    legacyId: "20",
     title: "Bytový dom v Žiline, ul. Nanterská",
     year: "rok 2012",
     category: "Bytové & Rodinné domy",
@@ -368,7 +389,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "21",
+    id: "objekty-schiedel-trencin",
+    legacyId: "21",
     title: "Objekty spol. Schiedel v Trenčíne",
     year: "rok 2014, 2015",
     category: "Priemyselné & Inžinierske stavby",
@@ -383,7 +405,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "22",
+    id: "rodinny-dom-varin",
+    legacyId: "22",
     title: "Rodinný dom vo Varíne",
     year: "rok 2014",
     category: "Bytové & Rodinné domy",
@@ -402,7 +425,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "23",
+    id: "predajna-coop-jednota-kamenna-poruba",
+    legacyId: "23",
     title: "Predajňa COOP Jednota v Kamennej Porube",
     year: "rok 2015",
     category: "Priemyselné & Inžinierske stavby",
@@ -436,7 +460,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "24",
+    id: "bilingvalne-gymnazium-zilina",
+    legacyId: "24",
     title: "Bilingválne gymnázium v Žiline",
     year: "rok 2015",
     category: "Školy & Nemocnice",
@@ -453,7 +478,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "25",
+    id: "regulacne-stanice-spp-okres-zilina",
+    legacyId: "25",
     title: "Regulačné stanice SPP v okrese Žilina",
     year: "rok 2015",
     category: "Priemyselné & Inžinierske stavby",
@@ -469,7 +495,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "26",
+    id: "banka-vub-zilina",
+    legacyId: "26",
     title: "Banka VÚB v Žiline",
     year: "rok 2016",
     category: "Priemyselné & Inžinierske stavby",
@@ -490,7 +517,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "27",
+    id: "materska-skola-zastranie",
+    legacyId: "27",
     title: "Materská škola v Zástraní",
     year: "rok 2016",
     category: "Školy & Nemocnice",
@@ -502,7 +530,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "28",
+    id: "cestne-mosty-a-nadjazdy",
+    legacyId: "28",
     title: "Stavby nových cestných mostov a nadjazdov",
     year: "stavby",
     category: "Priemyselné & Inžinierske stavby",
@@ -512,7 +541,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "29",
+    id: "capitis-development",
+    legacyId: "29",
     title: "CAPITIS development, s.r.o",
     year: "od roku 2019",
     category: "Priemyselné & Inžinierske stavby",
@@ -530,7 +560,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "30",
+    id: "uvn-snp-ruzomberok",
+    legacyId: "30",
     title: "ÚVN SNP Ružomberok",
     year: "rekonštrukcia",
     category: "Školy & Nemocnice",
@@ -558,7 +589,8 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "31",
+    id: "uvn-snp-poliklinika-trencin",
+    legacyId: "31",
     title: "ÚVN SNP poliklinika Trenčín",
     year: "rekonštrukcia",
     category: "Školy & Nemocnice",
@@ -582,6 +614,6 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export function getProject(id: string): Project | undefined {
-  return PROJECTS.find((p) => p.id === id);
+export function getProject(slug: string): Project | undefined {
+  return PROJECTS.find((p) => p.id === slug);
 }

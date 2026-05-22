@@ -30,25 +30,25 @@ const PARTNER_LOGOS = [
 
 const FEATURED_PROJECTS = [
   {
-    id: "30",
+    id: "uvn-snp-ruzomberok",
     title: "ÚVN SNP Ružomberok",
     type: "rekonštrukcia, od roku 2019",
     image: "/sources/portfolio/30/uvn_ruzomberok_(5).jpg"
   },
   {
-    id: "7",
+    id: "zakladna-skola-zazriva",
     title: "Základná škola v Zázrivej",
     type: "rok 2008",
     image: "/sources/portfolio/7/zs_zazriva_001.jpg"
   },
   {
-    id: "29",
+    id: "capitis-development",
     title: "CAPITIS development, s.r.o",
     type: "od roku 2019",
     image: "/sources/portfolio/29/capitis_(4).jpg"
   },
   {
-    id: "17",
+    id: "budova-alpha-bb-centrum-praha-4",
     title: "Budova ALPHA",
     type: "BB Centrum, Praha 4, rok 2011-2012",
     image: "/sources/portfolio/17/alpha_praha_001.jpg"

@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Mail, Phone, MapPin, Building } from "lucide-react";
+import { Phone, MapPin, Building } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { FadeInUp } from "@/components/FadeInUp";

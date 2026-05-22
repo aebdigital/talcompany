@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -17,9 +18,22 @@ const slideVariants = {
   exit: (dir: number) => ({ x: dir > 0 ? -80 : 80, opacity: 0, scale: 0.98 }),
 };
 
+function subscribeToHydration() {
+  return () => {};
+}
+
+function getClientSnapshot() {
+  return true;
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
 export function ProjectGallery({ title, images }: Props) {
   const [active, setActive] = useState<number | null>(null);
   const [direction, setDirection] = useState(0);
+  const mounted = useSyncExternalStore(subscribeToHydration, getClientSnapshot, getServerSnapshot);
 
   const open = useCallback((idx: number) => {
     setDirection(0);
@@ -81,7 +95,8 @@ export function ProjectGallery({ title, images }: Props) {
         ))}
       </div>
 
-      <AnimatePresence>
+      {mounted && createPortal(
+        <AnimatePresence>
         {active !== null && (
           <motion.div
             key="lightbox"
@@ -92,7 +107,8 @@ export function ProjectGallery({ title, images }: Props) {
             role="dialog"
             aria-modal="true"
             aria-label={`${title} – fotografia ${active + 1} z ${images.length}`}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90"
+            style={{ height: "100dvh", width: "100vw" }}
+            className="fixed inset-0 top-0 left-0 z-[100] flex items-center justify-center bg-black/90"
             onClick={close}
           >
             {/* Counter */}
@@ -130,7 +146,7 @@ export function ProjectGallery({ title, images }: Props) {
 
             {/* Image with sliding swap */}
             <div
-              className="relative h-[80vh] w-[90vw] max-w-6xl"
+              className="relative h-[80dvh] w-[90vw] max-w-6xl"
               onClick={(e) => e.stopPropagation()}
             >
               <AnimatePresence custom={direction} mode="popLayout" initial={false}>
@@ -176,7 +192,9 @@ export function ProjectGallery({ title, images }: Props) {
             )}
           </motion.div>
         )}
-      </AnimatePresence>
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { Cookie, X } from "lucide-react";
 
@@ -15,10 +15,8 @@ type Consent = {
   decidedAt: string;
 };
 
-function readConsent(): Consent | null {
-  if (typeof window === "undefined") return null;
+function parseConsent(raw: string | null): Consent | null {
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<Consent>;
     if (parsed?.version !== STORAGE_VERSION) return null;
@@ -33,6 +31,15 @@ function readConsent(): Consent | null {
   }
 }
 
+function readConsentSnapshot(): string | null {
+  if (typeof window === "undefined") return null;
+  return window.localStorage.getItem(STORAGE_KEY);
+}
+
+function readConsent(): Consent | null {
+  return parseConsent(readConsentSnapshot());
+}
+
 function writeConsent(consent: Omit<Consent, "version" | "decidedAt">) {
   if (typeof window === "undefined") return;
   const record: Consent = {
@@ -45,19 +52,39 @@ function writeConsent(consent: Omit<Consent, "version" | "decidedAt">) {
   window.dispatchEvent(new CustomEvent("tal:consent-changed", { detail: record }));
 }
 
-export function CookieConsent() {
-  const [stage, setStage] = useState<"hidden" | "banner" | "settings">("hidden");
-  const [statistics, setStatistics] = useState(false);
+function subscribeToConsentChange(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener("tal:consent-changed", onStoreChange);
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener("tal:consent-changed", onStoreChange);
+  };
+}
 
-  // First-load: decide whether to show the banner
-  useEffect(() => {
-    const existing = readConsent();
-    if (!existing) {
-      setStage("banner");
-    } else {
-      setStatistics(existing.statistics);
-    }
-  }, []);
+function readServerConsentSnapshot(): string | null | undefined {
+  return undefined;
+}
+
+export function CookieConsent() {
+  const consentSnapshot = useSyncExternalStore(
+    subscribeToConsentChange,
+    readConsentSnapshot,
+    readServerConsentSnapshot
+  );
+  const consent = useMemo(
+    () => (consentSnapshot === undefined ? undefined : parseConsent(consentSnapshot)),
+    [consentSnapshot]
+  );
+  const [stage, setStage] = useState<"auto" | "hidden" | "banner" | "settings">("auto");
+  const [statistics, setStatistics] = useState(false);
+  const visibleStage =
+    stage === "auto"
+      ? consent === undefined
+        ? "hidden"
+        : consent
+          ? "hidden"
+          : "banner"
+      : stage;
 
   // Allow other parts of the site (e.g. footer link) to reopen the settings dialog
   useEffect(() => {
@@ -72,13 +99,13 @@ export function CookieConsent() {
 
   // Lock background scroll while settings dialog is open
   useEffect(() => {
-    if (stage !== "settings") return;
+    if (visibleStage !== "settings") return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = previous;
     };
-  }, [stage]);
+  }, [visibleStage]);
 
   function acceptAll() {
     writeConsent({ necessary: true, statistics: true });
@@ -97,12 +124,12 @@ export function CookieConsent() {
     setStage("hidden");
   }
 
-  if (stage === "hidden") return null;
+  if (visibleStage === "hidden") return null;
 
   return (
     <>
       {/* Banner (first visit) */}
-      {stage === "banner" && (
+      {visibleStage === "banner" && (
         <div
           role="dialog"
           aria-label="Súhlas s používaním cookies"
@@ -153,7 +180,7 @@ export function CookieConsent() {
       )}
 
       {/* Settings dialog */}
-      {stage === "settings" && (
+      {visibleStage === "settings" && (
         <div
           role="dialog"
           aria-modal="true"
